@@ -5,17 +5,6 @@ import React, {useState, useEffect} from 'react';
 export default function Index({message}) {
     const ids = [56082,56083,56086,56102];
 
-    // const [reviews, setReviews] = useState([]);
-    // useEffect(()=>{
-    //     const getData = async () => {
-    //         const response = await fetch('https://jsonplaceholder.typicode.com/comments');
-    //         const data = await response.json();
-    //         setReviews(data);
-    //     }
-    //     getData();
-    // },[])
-    // console.log(reviews);
-
     const [reviews, setReviews] = useState([]);
     useEffect(()=>{
         const getData = async () => {

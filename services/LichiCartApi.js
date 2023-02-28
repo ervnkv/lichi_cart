@@ -3,11 +3,10 @@ import axios from 'axios';
 
 class LichiCart {
     constructor(baseURL) {
-        // this.baseURL = baseURL;
-        // this.sid = null;
+        this.sid = null;
         this.axios = axios.create({
             baseURL: baseURL,
-            withCredentials: true, // set withCredentials to true by default
+            // withCredentials: true,
         });
     }  
     
@@ -21,17 +20,14 @@ class LichiCart {
                     shop:shop,
                     id:id,
                 },
-                // {headers: {
-                //     Cookie: this.sid ?? ''
-                //     }
-                // },
-                // {withCredentials: true}
+                {headers: {
+                    Cookie: this.sid ?? ''
+                    }
+                },
                 );
-                console.log(response);
-                // if (this.sid == null) {
-                    
-                    // this.sid = response.headers['set-cookie'][0].split(';')[0];
-                // }
+                if (this.sid == null) {
+                    this.sid = response.headers['set-cookie'][0].split(';')[0];
+                }
                 if (response.data.api_data_success == true) {
                     resolve(response.data.api_data_success);
                 } else {
@@ -53,13 +49,14 @@ class LichiCart {
                     lang:lang,
                     shop:shop,
                 }, 
-                // {headers: {
-                //     Cookie: this.sid ?? ''
-                //     }
-                // },
-                // {withCredentials: true}
+                {headers: {
+                    Cookie: this.sid ?? ''
+                    }
+                },
                 );
-                console.log(response);
+                if (this.sid == null) {
+                    this.sid = response.headers['set-cookie'][0].split(';')[0];
+                }
                 resolve(response.data);
             } catch (error) {
                 reject(error);
@@ -81,7 +78,10 @@ class LichiCart {
                     Cookie: this.sid ?? ''
                     }
                 },
-                {withCredentials: true});
+                );
+                if (this.sid == null) {
+                    this.sid = response.headers['set-cookie'][0].split(';')[0];
+                }
                 resolve(response.data);
             } catch (error) {
                 reject(error);
@@ -99,23 +99,31 @@ const listID = [56082,56083,56086,56102];
 const lang = 1;
 const shop = 1;
 
-
+// Добавление товаров
 await cart.addItem(lang, shop, listID[0]);
 await cart.addItem(lang, shop, listID[1]);
 await cart.addItem(lang, shop, listID[2]);
 await cart.addItem(lang, shop, listID[3]);
 await cart.addItem(lang, shop, listID[3]);
 
+// Получить список товаров в корзине
 await cart.getListItems(lang, shop)
     .then((res) => console.log(`В корзине ${res.api_data.iCount} товарa(ов)`));
 
+// Удалить из корзины все товары с ID = listID[3]
 const deleteAllItems = true; // Если товар один, то false ничего не удалит
-await cart.removeItem(lang, shop, listID[2], deleteAllItems); 
+await cart.removeItem(lang, shop, listID[3], deleteAllItems); 
 
-
+// Получить список товаров в корзине
 await cart.getListItems(lang, shop)
     .then((res) => console.log(`В корзине ${res.api_data.iCount} товарa(ов)`));
 */
+
+
+
+
+
+
 
 // Поиск существующих ID
 /*

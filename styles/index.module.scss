@@ -1,0 +1,94 @@
+.container{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    .navbar {
+        display: flex;
+        justify-content: center;
+        .logo {
+            height: 80px;
+            width: auto;
+            user-select: none;
+        }
+    }
+    .main{
+        height: calc(100vh - 80px);
+        width: 100vw;
+        display: flex;
+        align-items:stretch;
+        .items {
+            width: 60%;
+            /* background-color: brown; */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            gap: 5%;
+            .item{
+                position: relative;
+
+                width: 60%;
+                height: 20%;
+                border-radius: 5px;
+                
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            
+                background: radial-gradient(circle, rgba(245,243,238,1) 0%, rgba(255,255,255,1) 45%, rgba(249,248,246,1) 45%, rgba(245,243,238,1) 100%);    
+                
+                font-size: 40px;
+                color: rgba(180, 165, 144, 0.705);
+            
+                user-select: none;
+                // cursor: pointer;
+                .btn_add{
+                    position: absolute;
+                    bottom: 0;
+                    height: 40px;
+                    width: 100%;
+
+                    background-color: rgba(0, 0, 0, 0.062);
+                    border: none;
+                    border-radius: 0 0 5px 5px;
+
+                    font-size: 16px;
+                    color: rgba(0, 0, 0, 0.712);
+
+                    cursor: pointer;
+                    &:hover{
+                        background-color: rgba(0, 0, 0, 0.096);
+                    }
+                }
+            }
+
+            
+        }
+        .cart{
+            width: 40%;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            flex-direction: column;
+            margin-right: 10%;
+            color: rgba(0, 0, 0, 0.712);
+            .cart_title{
+                margin-top: 20px;
+                font-size: 20px;
+                
+                width: 100%;
+                text-align: center;
+                border-bottom: solid 1px;
+            }
+            p{
+                margin-top: 10px;
+            }
+        }
+    }
+}
+
+
+
+
+
+

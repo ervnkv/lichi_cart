@@ -1,2 +1,2 @@
 # Тестовое задание для Lichi
-# lichi-cart.vercel.app
+# https://lichi-cart.vercel.app/
